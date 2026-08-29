@@ -1,5 +1,5 @@
 import './globals.css'
-import Navigation from '@/components/Navigation'
+import Navigation from '../components/Navigation'
 
 export const metadata = {
   title: 'Phase 3 Foundations',
