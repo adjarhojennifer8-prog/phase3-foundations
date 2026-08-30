@@ -37,7 +37,14 @@ function OpportunityCard({
 }
 
 export default function OpportunityChat() {
-  const { messages, sendMessage, status, stop } = useChat();
+  const {
+  messages,
+  sendMessage,
+  status,
+  stop,
+  error,
+  regenerate,
+} = useChat();
 
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -260,6 +267,25 @@ export default function OpportunityChat() {
             <span>Thinking...</span>
           </div>
         )}
+{error && (
+  <div className="chat-error" role="alert">
+    <div>
+      <strong>Something went wrong</strong>
+      <p>
+        We couldn&apos;t complete that request. Your conversation is still
+        here, so you can try the failed message again.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      onClick={() => regenerate()}
+      disabled={isSubmitted || isStreaming}
+    >
+      Retry
+    </button>
+  </div>
+)}
 
         <div ref={messagesEndRef} />
       </div>

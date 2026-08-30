@@ -413,3 +413,57 @@ a {
     align-items: flex-start;
   }
 }
+.chat-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #fecaca;
+  border-radius: 0.75rem;
+  background: #fef2f2;
+  color: #7f1d1d;
+}
+
+.chat-error strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.chat-error p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.chat-error button {
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: #991b1b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chat-error button:hover {
+  background: #7f1d1d;
+}
+
+.chat-error button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (max-width: 640px) {
+  .chat-error {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .chat-error button {
+    width: 100%;
+  }
+}

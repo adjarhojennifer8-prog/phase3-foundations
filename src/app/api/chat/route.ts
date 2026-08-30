@@ -4,7 +4,8 @@ import { searchOpportunities } from "@/lib/tools/searchOpportunities";
 
 export async function POST(req: Request) {
   try {
-    const { messages } = await req.json();
+
+  const { messages } = await req.json();
 
     const result = streamText({
       model: aiModel,
