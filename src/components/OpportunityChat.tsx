@@ -3,6 +3,39 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 
+type Opportunity = {
+  id: string;
+  title: string;
+  type: string;
+  field: string;
+  location: string;
+  funding: string;
+  description: string;
+};
+
+function OpportunityCard({
+  opportunity,
+}: {
+  opportunity: Opportunity;
+}) {
+  return (
+    <article className="opportunity-card">
+      <div className="opportunity-card-top">
+        <span className="opportunity-type">{opportunity.type}</span>
+        <span className="opportunity-funding">{opportunity.funding}</span>
+      </div>
+
+      <h4>{opportunity.title}</h4>
+
+      <p className="opportunity-meta">
+        {opportunity.field} · {opportunity.location}
+      </p>
+
+      <p>{opportunity.description}</p>
+    </article>
+  );
+}
+
 export default function OpportunityChat() {
   const { messages, sendMessage, status, stop } = useChat();
 
@@ -93,8 +126,8 @@ export default function OpportunityChat() {
       >
         {messages.length === 0 && (
           <p className="chat-empty">
-            Try: “I&apos;m an undergraduate looking for fully funded
-            technology opportunities.”
+            Try: &quot;I&apos;m an undergraduate looking for fully funded
+            technology opportunities.&quot;
           </p>
         )}
 
@@ -115,6 +148,106 @@ export default function OpportunityChat() {
                   return <p key={index}>{part.text}</p>;
                 }
 
+                if (part.type.startsWith("tool-")) {
+                  const toolPart = part as typeof part & {
+                    state?: string;
+                    input?: {
+                      field?: string;
+                      type?: string;
+                      location?: string;
+                      funding?: string;
+                    };
+                    output?: {
+                      query?: {
+                        field?: string | null;
+                        type?: string | null;
+                        location?: string | null;
+                        funding?: string | null;
+                      };
+                      count?: number;
+                      opportunities?: Opportunity[];
+                    };
+                    errorText?: string;
+                  };
+
+                  if (toolPart.state === "input-streaming") {
+                    return (
+                      <div className="tool-state tool-input-streaming" key={index}>
+                        <span aria-hidden="true">◌</span>
+                        <div>
+                          <strong>Preparing opportunity search</strong>
+                          <p>Getting the search criteria ready...</p>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  if (toolPart.state === "input-available") {
+                    return (
+                      <div className="tool-state tool-input-available" key={index}>
+                        <span aria-hidden="true">🔎</span>
+                        <div>
+                          <strong>Searching opportunities</strong>
+                          <p>
+                            {toolPart.input?.field || "All fields"}
+                            {" · "}
+                            {toolPart.input?.location || "All locations"}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  if (toolPart.state === "output-available") {
+                    const opportunities =
+                      toolPart.output?.opportunities ?? [];
+
+                    return (
+                      <div className="tool-result" key={index}>
+                        <div className="tool-result-header">
+                          <strong>Opportunity search complete</strong>
+                          <span>
+                            {toolPart.output?.count ?? 0} found
+                          </span>
+                        </div>
+
+                        {opportunities.length > 0 ? (
+                          <div className="opportunity-list">
+                            {opportunities.map((opportunity) => (
+                              <OpportunityCard
+                                key={opportunity.id}
+                                opportunity={opportunity}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="tool-no-results">
+                            No matching opportunities were found in the
+                            current dataset.
+                          </p>
+                        )}
+                      </div>
+                    );
+                  }
+
+                  if (toolPart.state === "output-error") {
+                    return (
+                      <div className="tool-state tool-error" key={index}>
+                        <span aria-hidden="true">⚠</span>
+                        <div>
+                          <strong>Opportunity search failed</strong>
+                          <p>
+                            {toolPart.errorText ||
+                              "We couldn't complete the search. Please try again."}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                }
+
                 return null;
               })}
             </div>
@@ -124,7 +257,7 @@ export default function OpportunityChat() {
         {isSubmitted && (
           <div className="thinking" aria-live="polite">
             <span aria-hidden="true">•••</span>
-            <span>Thinking…</span>
+            <span>Thinking...</span>
           </div>
         )}
 
