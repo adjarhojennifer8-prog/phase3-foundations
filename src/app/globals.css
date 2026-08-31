@@ -5,43 +5,54 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary: oklch(0.205 0 0);
-  --primary-hover: #5b21b6;
+  --primary: #4c1d95;
+  --primary-hover: #6d28d9;
 
   --surface: #ffffff;
-  --border: oklch(0.922 0 0);
+  --border: #ddd6fe;
 
-  --muted: oklch(0.97 0 0);
+  --muted: #f5f3ff;
   --success: #15803d;
-  --background: oklch(1 0 0);
+  --background: #faf9ff;
   --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
+
+  --card: #ffffff;
   --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
+
+  --popover: #ffffff;
   --popover-foreground: oklch(0.145 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+
+  --primary-foreground: #ffffff;
+
+  --secondary: #f5f3ff;
+  --secondary-foreground: #3b0764;
+
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+
+  --accent: #ede9fe;
+  --accent-foreground: #3b0764;
+
   --destructive: oklch(0.577 0.245 27.325);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+
+  --input: #ddd6fe;
+  --ring: #8b5cf6;
+
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
+
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
+
+  --sidebar: #ffffff;
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-primary: #4c1d95;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f3ff;
+  --sidebar-accent-foreground: #3b0764;
+  --sidebar-border: #ddd6fe;
+  --sidebar-ring: #8b5cf6;
 }
 
 @theme inline {
@@ -57,6 +68,7 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -65,23 +77,31 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-destructive: var(--destructive);
+
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+
   --color-muted-foreground: var(--muted-foreground);
+
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
+
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
+
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -107,35 +127,40 @@ a {
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
+
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
+
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+
+  --primary: #c4b5fd;
+  --primary-hover: #a78bfa;
+  --primary-foreground: #2e1065;
+
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
+
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+
+  --accent: #4c1d95;
+  --accent-foreground: #ede9fe;
+
   --destructive: oklch(0.704 0.191 22.216);
+
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  --ring: #8b5cf6;
+
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #8b5cf6;
+  --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: #8b5cf6;
 }
 
 @layer base {
@@ -256,7 +281,14 @@ a {
   padding: 0.75rem;
   border: 1px solid var(--border);
   border-radius: 0.75rem;
+  background: var(--surface);
+  color: var(--foreground);
   font: inherit;
+}
+
+.chat-form textarea:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
 .chat-form button {
@@ -267,6 +299,10 @@ a {
   background: var(--primary);
   color: var(--primary-foreground);
   cursor: pointer;
+}
+
+.chat-form button:hover:not(:disabled) {
+  background: var(--primary-hover);
 }
 
 .chat-form button:disabled {
@@ -385,34 +421,8 @@ a {
   background: var(--muted);
 }
 
-@media (max-width: 640px) {
-  .chat {
-    padding: 1rem;
-  }
+/* Chat error state */
 
-  .chat-messages {
-    height: 450px;
-  }
-
-  .chat-form {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .chat-form button {
-    width: 100%;
-  }
-
-  .tool-result-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .opportunity-card-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
 .chat-error {
   display: flex;
   align-items: center;
@@ -458,6 +468,33 @@ a {
 }
 
 @media (max-width: 640px) {
+  .chat {
+    padding: 1rem;
+  }
+
+  .chat-messages {
+    height: 450px;
+  }
+
+  .chat-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chat-form button {
+    width: 100%;
+  }
+
+  .tool-result-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .opportunity-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .chat-error {
     align-items: stretch;
     flex-direction: column;

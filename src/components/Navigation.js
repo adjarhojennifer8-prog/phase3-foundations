@@ -5,7 +5,6 @@ export default function Navigation() {
     <nav aria-label="Main navigation">
       <Link href="/">Home</Link>
       <Link href="/health">Health Check</Link>
-      <Link href="/about">About</Link>
     </nav>
   )
 }
